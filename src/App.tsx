@@ -19,29 +19,6 @@ const Container = styled.div`
   position: relative;
 `;
 
-const Title = styled.h1`
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 3.5rem;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #00ff00, #0080ff, #a000ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: rainbow 6s linear infinite;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  transform-style: preserve-3d;
-  transform: translateX(-50%) perspective(1000px) rotateX(10deg);
-
-  @keyframes rainbow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-  }
-`;
-
 const projects = [
   {
     title: "个人博客系统",
@@ -85,7 +62,7 @@ const Scene = ({ layoutMode }: SceneProps) => {
       <OrbitControls enableZoom={false} />
       <Stars />
       <Text
-        position={[0, 2, 0]}
+        position={[0, 1, 0]}
         fontSize={0.5}
         color="transparent"
         anchorX="center"
@@ -101,6 +78,24 @@ const Scene = ({ layoutMode }: SceneProps) => {
         }}
       >
         欢迎来到我的项目展示
+      </Text>
+      <Text
+        position={[0, 2, 0]}
+        fontSize={0.8}
+        color="transparent"
+        anchorX="center"
+        anchorY="middle"
+        style={{
+          background: 'linear-gradient(to right, #ff0000, #ff8000, #ffff00, #00ff00, #0080ff, #a000ff)',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          animation: 'rainbow 6s linear infinite',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+          transformStyle: 'preserve-3d',
+          transform: 'perspective(1000px) rotateX(10deg)'
+        }}
+      >
+        前端开发工程师
       </Text>
       {projects.map((project, index) => (
         <ProjectCard
@@ -121,7 +116,6 @@ function App() {
 
   return (
     <Container>
-      <Title>前端开发工程师</Title>
       <Canvas>
         <Scene layoutMode={layoutMode} />
       </Canvas>
