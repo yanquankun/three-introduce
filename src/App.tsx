@@ -24,11 +24,22 @@ const Title = styled.h1`
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin: 0;
   padding: 0;
-  color: white;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #00ff00, #0080ff, #a000ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 6s linear infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  transform: translateX(-50%) perspective(1000px) rotateX(10deg);
+
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
 `;
 
 const projects = [
@@ -76,9 +87,18 @@ const Scene = ({ layoutMode }: SceneProps) => {
       <Text
         position={[0, 2, 0]}
         fontSize={0.5}
-        color="white"
+        color="transparent"
         anchorX="center"
         anchorY="middle"
+        style={{
+          background: 'linear-gradient(to right, #ff0000, #ff8000, #ffff00, #00ff00, #0080ff, #a000ff)',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          animation: 'rainbow 6s linear infinite',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+          transformStyle: 'preserve-3d',
+          transform: 'perspective(1000px) rotateX(10deg)'
+        }}
       >
         欢迎来到我的项目展示
       </Text>
